@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ARCHIVE=0  # Default: Do not archive
+username="anish7605"
 
 # Parse command-line arguments
 while [[ "$#" -gt 0 ]]; do
@@ -16,11 +17,13 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
-curl https://api.github.com/users/anpa6841/repos?per_page=100 | jq '.[].name' | tr -d '"' > repos.txt
+curl -s https://api.github.com/users/${username}/repos?per_page=100 | jq '.[].name' | tr -d '"' > repos.txt
 
 # Read repos.txt and clone each repository
 while IFS= read -r repo; do
 	repo_path=$(pwd)/$repo
+
+	git -C $repo remote add origin "git@github.com:${username}/$repo" 2>/dev/null 
 
 	LOCAL_COMMIT=$(git -C $repo rev-parse HEAD | awk '{print $1}')
 	REMOTE_COMMIT=$(git -C $repo ls-remote origin HEAD | awk '{print $1}')
@@ -37,7 +40,7 @@ while IFS= read -r repo; do
 		fi
 	else
 		echo "Cloning repository..."
-		git clone "git@github.com:anpa6841/$repo"
+		git clone "git@github.com:${username}/$repo"
 	fi
 done < repos.txt
 
