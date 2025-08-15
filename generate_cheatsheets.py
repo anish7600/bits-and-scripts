@@ -16,8 +16,6 @@ Usage:
 
 Env:
   OPENAI_API_KEY must be set.
-
-Known Issue: Files generated count is incorrect. Not all files are getting generated.
 """
 from __future__ import annotations
 
