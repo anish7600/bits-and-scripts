@@ -15,6 +15,10 @@ Usage:
 
 Env:
   OPENAI_API_KEY must be set.
+
+Known Issue: command.txt contains 384 commands excluding empty lines and whitespaces but the script
+             does not produce html/markdown for every command listed as the overall files generated is 566.
+             Missing files needs to be looked into further.
 """
 from __future__ import annotations
 
