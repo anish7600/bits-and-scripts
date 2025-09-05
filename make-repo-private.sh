@@ -1,5 +1,4 @@
-#!/bin/bash
-
+### Bitbucket
 WORKSPACE="<your-workspace>"
 BITBUCKET_USER="<your-bitbucket-user-admin>"
 APP_PASSWORD="<APP_PASSWORD>"

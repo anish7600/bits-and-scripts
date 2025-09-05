@@ -1,11 +1,15 @@
 import requests
 
+def get_token():
+    with open('token.txt') as file:
+        return file.read().strip()
+
 # Replace with your GitHub username and personal access token
 GITHUB_USERNAME = "anish7600"
-GITHUB_TOKEN = "<GITHUB_TOKEN>"
+GITHUB_TOKEN = get_token()
 
 # === CONFIGURATION ===
-USE_MANUAL_LIST = True          # Set to True to use manual list instead of fetching
+USE_MANUAL_LIST = False          # Set to True to use manual list instead of fetching
 MAKE_PRIVATE = True            # True = make repos private, False = make public
 
 # === Optional manual list ===
@@ -21,7 +25,7 @@ def fetch_all_repos(username):
     repos = []
     page = 1
     while True:
-        url = f"https://api.github.com/user/repos?per_page=100&page={page}"
+        url = f"https://api.github.com/anish7600/repos?per_page=100&page={page}"
         response = requests.get(url, headers=headers)
         if response.status_code != 200:
             print(f"❌ Failed to fetch repos: {response.status_code} - {response.text}")

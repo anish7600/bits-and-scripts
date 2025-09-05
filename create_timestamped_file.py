@@ -1,3 +1,4 @@
+### This script was to create a timestamped file with a header for personal journaling purposes.
 import os
 from datetime import datetime
 

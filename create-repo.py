@@ -2,8 +2,12 @@ import os
 import subprocess
 import requests
 
+def get_token():
+    with open('token.txt') as file:
+        return file.read().strip()
+
 GITHUB_USERNAME = "anish7600"
-GITHUB_TOKEN = "*****"
+GITHUB_TOKEN = get_token()
 
 headers = {
     "Accept": "application/vnd.github.v3+json",

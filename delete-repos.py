@@ -1,8 +1,12 @@
 import requests
 
+def get_token():
+    with open('token.txt') as file:
+        return file.read().strip()
+
 # Replace with your GitHub username and personal access token
 GITHUB_USERNAME = "anish7600"
-GITHUB_TOKEN = "****"
+GITHUB_TOKEN = get_token()
 
 # List of repositories you want to delete
 REPOSITORIES = []
